@@ -1,0 +1,6 @@
+---
+- name: Ansible Ansible Tower
+  hosts: all
+  gather_facts: no  
+  roles:
+    - { role: Aplyca.AnsibleTower, tags: ["ansibletower"] }   

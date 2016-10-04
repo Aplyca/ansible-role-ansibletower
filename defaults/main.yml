@@ -1,0 +1,10 @@
+---
+ansibletower:
+  no_log: False
+  root: "/tmp"
+  version: 3.0.2
+  action: install
+  credentials:
+    admin: "password"
+    redis: "password"
+    postgresql: "password"
