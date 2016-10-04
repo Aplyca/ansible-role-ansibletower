@@ -4,11 +4,7 @@ Vagrant.configure(2) do |config|
       config_machine.vm.provider :virtualbox do |virtualbox, override|
         virtualbox.name = "Vagrant AnsibleTower"
 	    override.vm.box = "ubuntu/trusty64"
-        virtualbox.memory = 1024
-
-        # Configuring network
-        override.vm.hostname = 'hrs.web'
-        override.vm.network "private_network", ip: "214.0.0.201"        
+        virtualbox.memory = 2048
       end
 
       # Asinging a provisioner
