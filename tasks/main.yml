@@ -13,6 +13,7 @@
   template:
     src: inventory.j2
     dest: "{{ ansibletower.root }}/ansible-tower-setup-{{ ansibletower.version }}/inventory"
+  register: installed
   no_log: "{{ ansibletower.no_log }}"
 
 - name: Execute upgrade/installation
@@ -20,6 +21,7 @@
   shell: "./setup.sh"
   args:
     chdir: "{{ ansibletower.root }}/ansible-tower-setup-{{ ansibletower.version }}"
+  when: installed.changed
 
 - name: Copy backup file
   copy:
@@ -27,7 +29,7 @@
     dest: "{{ ansibletower.root }}/ansible-tower-setup-{{ ansibletower.version }}/tower-backup-latest.tar.gz"
   when: ansibletower.action == "restore"
 
-- name:
+- name: Restore backup from S3
   s3:
     bucket: "{{ ansibletower.backup_bucket }}"
     object: "{{ ansibletower.backup_file }}"

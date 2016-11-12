@@ -2,7 +2,7 @@
 ansibletower:
   no_log: False
   root: "/tmp"
-  version: 3.0.2
+  version: 3.0.3
   action: install
   backup_file: "~/tower-backup-latest.tar.gz"
   backup_bucket: mybucket
