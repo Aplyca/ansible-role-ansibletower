@@ -21,7 +21,7 @@
   shell: "./setup.sh"
   args:
     chdir: "{{ ansibletower.root }}/ansible-tower-setup-{{ ansibletower.version }}"
-  when: installed.changed
+  when: installed.changed or ansibletower.action == "upgrade"
 
 - name: Copy backup file
   copy:
