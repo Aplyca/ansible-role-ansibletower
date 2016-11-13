@@ -1,10 +1,3 @@
-- name: Download Ansible Tower
-  unarchive:
-    src: http://releases.ansible.com/ansible-tower/setup/ansible-tower-setup-{{ ansibletower.version }}.tar.gz
-    dest: "{{ ansibletower.root }}"
-    copy: no
-    creates: "{{ ansibletower.root }}/ansible-tower-setup-{{ ansibletower.version }}/setup.sh"
-
 - name: Configure credentials
   template:
     src: inventory.j2

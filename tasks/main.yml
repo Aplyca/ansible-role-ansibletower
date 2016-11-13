@@ -2,8 +2,15 @@
 - debug: var=ansibletower verbosity=1
   tags: vars
 
+- name: Download Ansible Tower
+  unarchive:
+    src: http://releases.ansible.com/ansible-tower/setup/ansible-tower-setup-{{ ansibletower.version }}.tar.gz
+    dest: "{{ ansibletower.root }}"
+    copy: no
+    creates: "{{ ansibletower.root }}/ansible-tower-setup-{{ ansibletower.version }}/setup.sh"
+
 - block:
     - name: Include action tasks
       include: "{{ ansibletower.action }}.yml"
   rescue:
-    - debug: msg='Action invalid. Use install, upgrade, backup or restore'  
+    - debug: msg='Action invalid. Use install, upgrade, backup or restore'
