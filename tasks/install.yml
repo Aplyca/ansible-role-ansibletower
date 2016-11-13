@@ -1,0 +1,19 @@
+- name: Download Ansible Tower
+  unarchive:
+    src: http://releases.ansible.com/ansible-tower/setup/ansible-tower-setup-{{ ansibletower.version }}.tar.gz
+    dest: "{{ ansibletower.root }}"
+    copy: no
+    creates: "{{ ansibletower.root }}/ansible-tower-setup-{{ ansibletower.version }}/setup.sh"
+
+- name: Configure credentials
+  template:
+    src: inventory.j2
+    dest: "{{ ansibletower.root }}/ansible-tower-setup-{{ ansibletower.version }}/inventory"
+  no_log: "{{ ansibletower.no_log }}"
+  when: ansibletower.action == "install"
+
+- name: Execute upgrade/installation
+  become: yes
+  shell: "./setup.sh"
+  args:
+    chdir: "{{ ansibletower.root }}/ansible-tower-setup-{{ ansibletower.version }}"

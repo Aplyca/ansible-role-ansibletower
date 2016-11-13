@@ -1,0 +1,12 @@
+- name: Restore backup from S3
+  s3:
+    bucket: "{{ ansibletower.backup_bucket }}"
+    object: "{{ ansibletower.backup_file }}"
+    dest: "{{ ansibletower.root }}/ansible-tower-setup-{{ ansibletower.version }}/tower-backup-latest.tar.gz"
+    mode: get
+
+- name: Restore Backup
+  become: yes
+  shell: "./setup.sh -r tower-backup-latest.tar.gz"
+  args:
+    chdir: "{{ ansibletower.root }}/ansible-tower-setup-{{ ansibletower.version }}"

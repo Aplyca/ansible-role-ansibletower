@@ -1,3 +1,5 @@
 ---
 ansibletower:
   no_log: False
+  version: 3.0.3
+  action: install
