@@ -1,5 +1,4 @@
 - name: Perform backup
-  become: yes
   shell: "./setup.sh -b"
   args:
     chdir: "{{ ansibletower.root }}/ansible-tower-setup-{{ ansibletower.version }}"

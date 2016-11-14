@@ -13,4 +13,4 @@
     - name: Include action tasks
       include: "{{ ansibletower.action }}.yml"
   rescue:
-    - debug: msg='Action invalid. Use install, upgrade, backup or restore'
+    - debug: msg='An error has ocurred, please review and try again'
