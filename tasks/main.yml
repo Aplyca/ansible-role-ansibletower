@@ -13,4 +13,4 @@
     - name: Include action tasks
       include: "{{ ansibletower.action }}.yml"
   rescue:
-    - debug: msg='An error has ocurred, please review and try again'
+    - fail: msg="An error has ocurred, please review and try again."
