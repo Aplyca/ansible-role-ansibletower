@@ -4,7 +4,7 @@ ansibletower:
   root: "/tmp"
   version: 3.0.3
   action: install
-  backup_file: "~/tower-backup-latest.tar.gz"
+  backup_file: tower-backup-latest.tar.gz
   backup_bucket: mybucket
   credentials:
     admin: "password"
