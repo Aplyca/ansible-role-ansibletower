@@ -8,5 +8,5 @@ ansibletower:
   backup_bucket: mybucket
   credentials:
     admin: "password"
-    redis: "password"
+    rabbitmq: ""
     postgresql: "password"
