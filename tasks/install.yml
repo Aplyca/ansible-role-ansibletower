@@ -3,7 +3,6 @@
     src: inventory.j2
     dest: "{{ ansibletower.root }}/ansible-tower-setup-{{ ansibletower.version }}/inventory"
   no_log: "{{ ansibletower.no_log }}"
-  when: ansibletower.action == "install"
 
 - name: Execute upgrade/installation
   become: yes
