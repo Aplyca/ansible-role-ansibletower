@@ -2,15 +2,20 @@
 - debug: var=ansibletower verbosity=1
   tags: vars
 
-- name: Download Ansible Tower
+- name: Download tower
+  get_url:
+    url: "http://releases.ansible.com/ansible-tower/setup/ansible-tower-setup-{{ ansibletower.version }}.tar.gz"
+    dest: "{{ ansibletower.root }}/ansible-tower-setup-{{ ansibletower.version }}.tar.gz"
+
+- name: Uncompress Ansible Tower
   unarchive:
-    src: http://releases.ansible.com/ansible-tower/setup/ansible-tower-setup-{{ ansibletower.version }}.tar.gz
+    src: "{{ ansibletower.root }}/ansible-tower-setup-{{ ansibletower.version }}.tar.gz"
     dest: "{{ ansibletower.root }}"
     copy: no
     creates: "{{ ansibletower.root }}/ansible-tower-setup-{{ ansibletower.version }}/setup.sh"
 
 - block:
     - name: Include action tasks
-      include: "{{ ansibletower.action }}.yml"
+      include_tasks: "{{ ansibletower.action }}.yml"
   rescue:
     - fail: msg="An error has ocurred, please review and try again."

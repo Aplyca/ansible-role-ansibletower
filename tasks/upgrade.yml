@@ -1,2 +1,2 @@
 - name: Include upgrade tasks
-  include: install.yml
+  include_tasks: install.yml
