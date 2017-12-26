@@ -5,7 +5,7 @@
     chdir: "{{ ansibletower.root }}/ansible-tower-setup-{{ ansibletower.version }}"
 
 - name: Upload backup to S3
-  s3:
+  aws_s3:
     bucket: "{{ ansibletower.backup_bucket }}"
     object: tower-backup-latest.tar.gz
     src: "{{ ansibletower.root }}/ansible-tower-setup-{{ ansibletower.version }}/tower-backup-latest.tar.gz"
