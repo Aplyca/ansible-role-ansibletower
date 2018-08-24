@@ -9,3 +9,6 @@
   shell: "./setup.sh"
   args:
     chdir: "{{ ansibletower.root }}/ansible-tower-setup-{{ ansibletower.version }}"
+  async: 7200
+  poll: 5
+
